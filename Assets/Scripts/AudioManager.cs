@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class AudioManager : MonoBehaviour
@@ -18,7 +16,7 @@ public class AudioManager : MonoBehaviour
     AudioClip Winner;
 
     AudioSource musicSource;
-   // float sfxVolume = 0.5f;
+    // float sfxVolume = 0.5f;
     private void Awake()
     {
         if (instance != null)
@@ -45,23 +43,25 @@ public class AudioManager : MonoBehaviour
 
     public void PlayFaulAudio()
     {
-       DefaultAudiosSetting(FaulMusic);
+        DefaultAudiosSetting(FaulMusic);
     }
     public void NewballAudio()
     {
-       DefaultAudiosSetting(newball);
+        DefaultAudiosSetting(newball);
     }
     public void PinCollideAudio()
     {
-       DefaultAudiosSetting(pinCollide);
+        DefaultAudiosSetting(pinCollide);
     }
-    public void PlayWinnerAudio(){
+    public void PlayWinnerAudio()
+    {
         DefaultAudiosSetting(Winner);
     }
 
-    
 
-    void DefaultAudiosSetting(AudioClip tempClip){
+
+    void DefaultAudiosSetting(AudioClip tempClip)
+    {
         musicSource = CreateAudioSource();
         musicSource.transform.parent = this.transform;
         musicSource.clip = tempClip;
@@ -70,7 +70,7 @@ public class AudioManager : MonoBehaviour
         musicSource.Play();
     }
 
-    
+
 
     AudioSource CreateAudioSource()
     {

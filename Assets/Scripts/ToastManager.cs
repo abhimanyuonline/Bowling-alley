@@ -1,13 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class ToastManager : MonoBehaviour
 {
 
     public static ToastManager Instance;
-    Vector2 DestinationPos= new(0,300);
+    Vector2 DestinationPos = new(0, 300);
 
     private void Awake()
     {
@@ -16,7 +14,8 @@ public class ToastManager : MonoBehaviour
             Instance = this;
             DontDestroyOnLoad(this.gameObject);
         }
-        else {
+        else
+        {
             Destroy(this.gameObject);
         }
     }

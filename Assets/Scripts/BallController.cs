@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class BallController : MonoBehaviour
 {
@@ -24,8 +21,8 @@ public class BallController : MonoBehaviour
 
     void Update()
     {
-        if(!SetUpGame.instance._allowTouch)
-        return;
+        if (!SetUpGame.instance._allowTouch)
+            return;
 
         RepostionBall();
 
@@ -36,7 +33,7 @@ public class BallController : MonoBehaviour
         }
         if (Input.GetButtonUp("Fire1") && launchingEnabled)
         {
-            SetUpGame.instance._allowTouch = false; 
+            SetUpGame.instance._allowTouch = false;
             launch = true;
         }
 
@@ -46,7 +43,7 @@ public class BallController : MonoBehaviour
     {
         if (!launch)
             return;
-        
+
         LaunchBall();
 
     }
@@ -86,17 +83,18 @@ public class BallController : MonoBehaviour
 
         if (collision.gameObject.CompareTag("ball"))
         {
-            Debug.Log("touch"+collision.gameObject.name);
-             AudioManager.instance.PinCollideAudio();
-           LattestScore(0,1);
+            Debug.Log("touch" + collision.gameObject.name);
+            AudioManager.instance.PinCollideAudio();
+            LattestScore(0, 1);
         }
         if (collision.gameObject.CompareTag("wall"))
         {
-             SetUpGame.instance.currentBall.GetComponent<Rigidbody>().isKinematic = true;
+            SetUpGame.instance.currentBall.GetComponent<Rigidbody>().isKinematic = true;
         }
     }
-     public void LattestScore(int collides , int touch){
-        Debug.Log(collides+"touch"+touch);
-        SetUpGame.instance.UpdateScore(collides,touch);
+    public void LattestScore(int collides, int touch)
+    {
+        Debug.Log(collides + "touch" + touch);
+        SetUpGame.instance.UpdateScore(collides, touch);
     }
 }

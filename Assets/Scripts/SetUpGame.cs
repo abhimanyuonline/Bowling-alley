@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -16,7 +15,7 @@ public class SetUpGame : MonoBehaviour
     public Vector3 initialPosOfBall;
     public PhysicMaterial[] ballMaterials;
     public TMP_Text scoreText;
-    
+
     public string setelctedMaterial;
     public TMP_Text setelctedMaterialDispalyText;
     public TMP_Text newRoundDispalyText;
@@ -32,7 +31,7 @@ public class SetUpGame : MonoBehaviour
     public int collapsePinFactor = 0;
     public int touchPinFactor = 0;
 
-    public bool _allowTouch ;
+    public bool _allowTouch;
 
 
 
@@ -67,7 +66,7 @@ public class SetUpGame : MonoBehaviour
         {
             item.gameObject.SetActive(true);
         }
-        
+
         gameCanvas.gameObject.SetActive(true);
 
         if (playCount == 0)
@@ -75,15 +74,15 @@ public class SetUpGame : MonoBehaviour
             int ranIndex = Random.Range(0, totalTypeBalls.Count);
             SelectBall(totalTypeBalls[ranIndex]);
             totalTypeBalls.RemoveAt(ranIndex);
-            
+
         }
         currentBall.gameObject.SetActive(true);
-        bowlingCount.text ="bowled: "+playCount.ToString()+"/5";
+        bowlingCount.text = "bowled: " + playCount.ToString() + "/5";
         playCount++;
-       _allowTouch = true;
-        
+        _allowTouch = true;
+
     }
-    
+
     public void SelectBall(string type)
     {
         AudioManager.instance.NewballAudio();
@@ -104,7 +103,7 @@ public class SetUpGame : MonoBehaviour
         }
         currentBall.gameObject.SetActive(true);
         SetPointFactor();
-        
+
     }
     public void SetPointFactor()
     {
@@ -114,8 +113,8 @@ public class SetUpGame : MonoBehaviour
     public void UpdateScore(int collapse, int touch)
     {
         totalScore += collapsePinFactor * collapse + touch * touchPinFactor;
-        scoreText.text = "Score: "+totalScore.ToString();
+        scoreText.text = "Score: " + totalScore.ToString();
     }
-   
+
 
 }

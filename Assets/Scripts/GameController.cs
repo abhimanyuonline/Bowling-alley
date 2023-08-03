@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 using TMPro;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 public class GameController : MonoBehaviour
 {
@@ -17,10 +17,6 @@ public class GameController : MonoBehaviour
 
     public int totalRound = 0;
 
-    /// <summary>
-    /// Start is called on the frame when a script is enabled just before
-    /// any of the Update methods is called the first time.
-    /// </summary>
     void Start()
     {
         pins = GameObject.FindGameObjectsWithTag("ball");
@@ -40,7 +36,7 @@ public class GameController : MonoBehaviour
         SetUpGame.instance.InitSceneSetupForGame();
         SetUpGame.instance.currentBall.GetComponent<Rigidbody>().isKinematic = true;
         StartCoroutine(ResetBall());
-       
+
     }
 
     IEnumerator ResetBall()
@@ -68,14 +64,14 @@ public class GameController : MonoBehaviour
                 {
                     counts++;
                     dropedPins.Add(obj);
-                    ToastManager.Instance.ShowTost("Congratulations "+DataManager.Instance.PlayerName);
+                    ToastManager.Instance.ShowTost("Congratulations " + DataManager.Instance.PlayerName);
                     faulMove = false;
                 }
             }
         }
         if (faulMove)
         {
-            ToastManager.Instance.ShowTost("Oops "+DataManager.Instance.PlayerName);
+            ToastManager.Instance.ShowTost("Oops " + DataManager.Instance.PlayerName);
             AudioManager.instance.PlayFaulAudio();
         }
         LattestScore(counts, 0);
@@ -88,10 +84,12 @@ public class GameController : MonoBehaviour
         {
             if (dropedPins.Count == pins.Length)
             {
-                ToastManager.Instance.ShowTost(DataManager.Instance.PlayerName+", You have won."); 
-                AudioManager.instance.PlayWinnerAudio();       
-            }else{
-                ToastManager.Instance.ShowTost("Oops "+DataManager.Instance.PlayerName+",Try on next round");
+                ToastManager.Instance.ShowTost(DataManager.Instance.PlayerName + ", You have won.");
+                AudioManager.instance.PlayWinnerAudio();
+            }
+            else
+            {
+                ToastManager.Instance.ShowTost("Oops " + DataManager.Instance.PlayerName + ",Try on next round");
             }
             GameFinished();
         }
@@ -109,8 +107,8 @@ public class GameController : MonoBehaviour
         GameObject g = Instantiate(scoreListObj, scoreListParent.transform);
         g.SetActive(true);
         g.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = SetUpGame.instance.setelctedMaterial;
-        g.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = "Score: "+SetUpGame.instance.totalScore.ToString();
-        g.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = "Pin Dropped: "+dropedPins.Count.ToString();
+        g.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = "Score: " + SetUpGame.instance.totalScore.ToString();
+        g.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = "Pin Dropped: " + dropedPins.Count.ToString();
 
     }
 
@@ -125,7 +123,7 @@ public class GameController : MonoBehaviour
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
             return;
         }
-         DisplayNewRound(totalRound);
+        DisplayNewRound(totalRound);
 
         SetUpGame.instance.ScoreList.SetActive(false);
         dropedPins.Clear();
@@ -142,17 +140,19 @@ public class GameController : MonoBehaviour
         SetUpGame.instance.UpdateScore(0, 0);
         ResetGame();
     }
-    void DisplayNewRound(int rounds = 0){
+    void DisplayNewRound(int rounds = 0)
+    {
         rounds++;
-        SetUpGame.instance.newRoundDispalyText.text = "Round: "+rounds.ToString() + "/5";
+        SetUpGame.instance.newRoundDispalyText.text = "Round: " + rounds.ToString() + "/5";
         SetUpGame.instance.newRoundDispalyText.gameObject.SetActive(true);
         StartCoroutine(DisableRoundtext());
     }
-    IEnumerator DisableRoundtext(){
+    IEnumerator DisableRoundtext()
+    {
         yield return new WaitForSeconds(2.0f);
         SetUpGame.instance.newRoundDispalyText.gameObject.SetActive(false);
         yield return null;
     }
-    
+
 
 }

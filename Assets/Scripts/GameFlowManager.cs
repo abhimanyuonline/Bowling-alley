@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class GameFlowManager : MonoBehaviour
@@ -33,8 +31,9 @@ public class GameFlowManager : MonoBehaviour
     {
         EnterMainMenu();
     }
-    public void SaveName(){
-        
+    public void SaveName()
+    {
+
     }
     public void EnterMainMenu()
     {
@@ -44,8 +43,6 @@ public class GameFlowManager : MonoBehaviour
     {
         InitSceneSetupForGame();
     }
-
-
     void InitSceneSetupForGame()
     {
         gameSpawner.SetActive(true);

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class DataManager : MonoBehaviour
@@ -32,7 +30,7 @@ public class DataManager : MonoBehaviour
     {
         get
         {
-            return PlayerPrefs.GetInt("Score", 0);   
+            return PlayerPrefs.GetInt("Score", 0);
         }
         set
         {
