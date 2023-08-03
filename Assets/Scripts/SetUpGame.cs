@@ -32,6 +32,7 @@ public class SetUpGame : MonoBehaviour
     public int collapsePinFactor = 0;
     public int touchPinFactor = 0;
 
+    public bool _allowTouch ;
 
 
 
@@ -79,8 +80,7 @@ public class SetUpGame : MonoBehaviour
         currentBall.gameObject.SetActive(true);
         bowlingCount.text ="bowled: "+playCount.ToString()+"/5";
         playCount++;
-        Debug.LogError("playCount"+playCount);
-       
+       _allowTouch = true;
         
     }
     
@@ -104,6 +104,7 @@ public class SetUpGame : MonoBehaviour
         }
         currentBall.gameObject.SetActive(true);
         SetPointFactor();
+        
     }
     public void SetPointFactor()
     {

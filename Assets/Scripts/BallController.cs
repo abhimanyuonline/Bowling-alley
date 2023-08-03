@@ -22,9 +22,11 @@ public class BallController : MonoBehaviour
         SetUpGame.instance.initialPosOfBall = this.transform.position;
     }
 
-
     void Update()
     {
+        if(!SetUpGame.instance._allowTouch)
+        return;
+
         RepostionBall();
 
         if (Input.GetButton("Fire1") && !launchingEnabled)
@@ -34,6 +36,7 @@ public class BallController : MonoBehaviour
         }
         if (Input.GetButtonUp("Fire1") && launchingEnabled)
         {
+            SetUpGame.instance._allowTouch = false; 
             launch = true;
         }
 
