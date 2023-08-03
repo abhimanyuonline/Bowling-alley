@@ -13,8 +13,6 @@ public class MainMenuUIC : MonoBehaviour
     {
         GM = SimpleGameManager.Instance;
         GM.OnStateChange += HandleOnStateChange;
-
-        Debug.Log("Current game state when Awakes: " + GM.gameState);
     }
      public void HandleOnStateChange ()
     {

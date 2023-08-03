@@ -45,9 +45,8 @@ public class BallController : MonoBehaviour
     void FixedUpdate()
     {
         if (!launch)
-        {
             return;
-        }
+        
         LaunchBall();
 
     }
@@ -60,12 +59,12 @@ public class BallController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.LeftArrow) && transform.position.x > -0.4f)
         {
-            Vector3 newPos = new Vector3(transform.position.x - 4, transform.position.y, transform.position.z);
+            Vector3 newPos = new(transform.position.x - 4, transform.position.y, transform.position.z);
             transform.position = Vector3.MoveTowards(transform.position, newPos, 2.0f * Time.deltaTime);
         }
         if (Input.GetKeyDown(KeyCode.RightArrow) && transform.position.x < 0.4f)
         {
-            Vector3 newPos = new Vector3(transform.position.x + 4, transform.position.y, transform.position.z);
+            Vector3 newPos = new(transform.position.x + 4, transform.position.y, transform.position.z);
             transform.position = Vector3.MoveTowards(transform.position, newPos, 2.0f * Time.deltaTime);
         }
     }
@@ -85,13 +84,13 @@ public class BallController : MonoBehaviour
     private void OnTriggerEnter(Collider collision)
     {
 
-        if (collision.gameObject.tag == "ball")
+        if (collision.gameObject.CompareTag("ball"))
         {
             Debug.Log("touch"+collision.gameObject.name);
              AudioManager.instance.PinCollideAudio();
            LattestScore(0,1);
         }
-        if (collision.gameObject.tag == "wall")
+        if (collision.gameObject.CompareTag("wall"))
         {
              SetUpGame.instance.currentBall.GetComponent<Rigidbody>().isKinematic = true;
         }

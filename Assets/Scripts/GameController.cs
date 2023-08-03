@@ -10,7 +10,6 @@ public class GameController : MonoBehaviour
     public List<Vector3> pinsRotation;
 
     int counts = 0;
-    int remainingPins = 0;
     public List<GameObject> dropedPins;
 
     public GameObject scoreListParent;
@@ -30,14 +29,13 @@ public class GameController : MonoBehaviour
             pinsLocation.Add(pins[i].transform.localPosition);
             pinsRotation.Add(pins[i].transform.localRotation.eulerAngles);
         }
-        remainingPins = pins.Length;
     }
 
     void ResetGame()
     {
         foreach (var item in dropedPins)
         {
-            item.gameObject.SetActive(false);
+            item.SetActive(false);
         }
         SetUpGame.instance.InitSceneSetupForGame();
         SetUpGame.instance.currentBall.GetComponent<Rigidbody>().isKinematic = true;
@@ -134,7 +132,7 @@ public class GameController : MonoBehaviour
         for (int i = 0; i < pins.Length; i++)
         {
             pins[i].transform.GetComponent<Rigidbody>().isKinematic = true;
-            pins[i].gameObject.SetActive(true);
+            pins[i].SetActive(true);
             pins[i].transform.localPosition = pinsLocation[i];
             pins[i].transform.localEulerAngles = new Vector3(pinsRotation[i].x, pinsRotation[i].y, pinsRotation[i].z);
             pins[i].transform.GetComponent<Rigidbody>().isKinematic = false;
@@ -151,7 +149,7 @@ public class GameController : MonoBehaviour
         StartCoroutine(DisableRoundtext());
     }
     IEnumerator DisableRoundtext(){
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(2.0f);
         SetUpGame.instance.newRoundDispalyText.gameObject.SetActive(false);
         yield return null;
     }
