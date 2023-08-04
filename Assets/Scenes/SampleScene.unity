@@ -1997,7 +1997,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: BowlingAlleyw
+  m_text: Bowling Alley
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 73bcdb5004d1e854181c2f681fefa007, type: 2}
   m_sharedMaterial: {fileID: -4070233106999670639, guid: 73bcdb5004d1e854181c2f681fefa007, type: 2}
@@ -3063,12 +3063,12 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Hold Left Click to activate
+  m_text: 'Hold Left Click/ Up Arrow  to activate
 
-    Release Left Click to launch.
+    Release Left Click/Up Arrow 
+    to launch.
 
-    Use
-    Left/Right Arrow  to shift ball.'
+    Use Left/Right Arrow  to shift ball.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3095,7 +3095,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 32.2
+  m_fontSize: 28.2
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1

@@ -26,12 +26,12 @@ public class BallController : MonoBehaviour
 
         RepostionBall();
 
-        if (Input.GetButton("Fire1") && !launchingEnabled)
+        if ((Input.GetButton("Fire1") || Input.GetKeyDown(KeyCode.UpArrow )) && !launchingEnabled)
         {
             DisplayDirectonindicator();
 
         }
-        if (Input.GetButtonUp("Fire1") && launchingEnabled)
+        if ((Input.GetButtonUp("Fire1") || Input.GetKeyUp(KeyCode.UpArrow)) && launchingEnabled)
         {
             SetUpGame.instance._allowTouch = false;
             launch = true;
