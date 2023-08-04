@@ -19,7 +19,7 @@ public class GameController : MonoBehaviour
 
     void Start()
     {
-        pins = GameObject.FindGameObjectsWithTag("ball");
+        pins = GameObject.FindGameObjectsWithTag("pin");
         for (int i = 0; i < pins.Length; i++)
         {
             pinsLocation.Add(pins[i].transform.localPosition);
@@ -80,7 +80,7 @@ public class GameController : MonoBehaviour
     }
     public void CheckForGameStatus()
     {
-        if (dropedPins.Count == pins.Length || SetUpGame.instance.playCount == 5)
+        if (dropedPins.Count == pins.Length || SetUpGame.instance.playCount == SetUpGame.instance.maxPlayCount)
         {
             if (dropedPins.Count == pins.Length)
             {
@@ -109,6 +109,7 @@ public class GameController : MonoBehaviour
         g.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = SetUpGame.instance.setelctedMaterial;
         g.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = "Score: " + SetUpGame.instance.totalScore.ToString();
         g.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = "Pin Dropped: " + dropedPins.Count.ToString();
+        SetUpGame.instance.bowlingCount.text = $"bowled: {SetUpGame.instance.playCount.ToString()}/{SetUpGame.instance.maxPlayCount.ToString()}";
 
     }
 

@@ -20,11 +20,12 @@ public class SetUpGame : MonoBehaviour
     public TMP_Text setelctedMaterialDispalyText;
     public TMP_Text newRoundDispalyText;
     public TMP_Text bowlingCount;
-
+    [HideInInspector]
     public int playCount = 0;
-
+    public int maxPlayCount = 5;
     public Canvas gameCanvas;
     public GameObject ScoreList;
+    public TextMeshProUGUI userName;
 
     public int totalScore = 0;
 
@@ -77,7 +78,7 @@ public class SetUpGame : MonoBehaviour
 
         }
         currentBall.gameObject.SetActive(true);
-        bowlingCount.text = "bowled: " + playCount.ToString() + "/5";
+        bowlingCount.text = "bowled: " + playCount.ToString() + "/"+maxPlayCount.ToString();
         playCount++;
         _allowTouch = true;
 

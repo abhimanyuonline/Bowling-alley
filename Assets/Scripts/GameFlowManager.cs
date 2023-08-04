@@ -47,6 +47,7 @@ public class GameFlowManager : MonoBehaviour
     {
         gameSpawner.SetActive(true);
         SetUpGame.instance.InitSceneSetupForGame();
+        SetUpGame.instance.userName.text = DataManager.Instance.PlayerName;
         uiCanvas.gameObject.SetActive(false);
     }
 

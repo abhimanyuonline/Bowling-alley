@@ -81,7 +81,7 @@ public class BallController : MonoBehaviour
     private void OnTriggerEnter(Collider collision)
     {
 
-        if (collision.gameObject.CompareTag("ball"))
+        if (collision.gameObject.CompareTag("pin"))
         {
             Debug.Log("touch" + collision.gameObject.name);
             AudioManager.instance.PinCollideAudio();
